@@ -1,6 +1,11 @@
 #!/usr/bin/php
 <?php
 
+/**
+ * Overlay for AltDNS
+ * https://github.com/infosec-au/altdns
+ * 
+ */
 
 function usage( $err=null ) {
   echo 'Usage: '.$_SERVER['argv'][0]." <domain_id> <wordlist>\n";
