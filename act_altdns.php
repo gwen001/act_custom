@@ -76,7 +76,7 @@ if( $_SERVER['argc'] != 3 ) {
 	$final_file = tempnam( '/tmp', 'act_' );
 	
 	while( ($host=$r->fetch_object()) ) {
-		file_put_contents( $host_file, $host->name, FILE_APPEND );
+		file_put_contents( $host_file, $host->name."\n", FILE_APPEND );
 	}
 } //
 
@@ -115,15 +115,18 @@ if( $_SERVER['argc'] != 3 ) {
 	echo $cnt_host." unique host found.\n";
 	echo $cnt_ip_uniq." unique ip found.\n\n";
 	
-	$percent_uniq = 100 / $cnt_ip_uniq; // jajaja
-	//var_dump( $percent_uniq );
-	
-	if( $percent_uniq >= WILDCARD_ALERT ) {
-		usage( 'wildcard detected' );
-	}
-	
-	foreach( $t_host as $h ) {
-		echo Utils::cleanOutput($h)."\n";
+	if( $cnt_host && $cnt_ip_uniq )
+	{
+		$percent_uniq = 100 / $cnt_ip_uniq; // jajaja
+		//var_dump( $percent_uniq );
+		
+		if( $percent_uniq >= WILDCARD_ALERT ) {
+			usage( 'wildcard detected' );
+		}
+		
+		foreach( $t_host as $h ) {
+			echo Utils::cleanOutput($h)."\n";
+		}
 	}
 } //
 
