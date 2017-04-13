@@ -84,7 +84,6 @@ if( $_SERVER['argc'] != 3 ) {
 	
 	while( ($bucket=$r->fetch_object()) ) {
 		$t_todo[] = preg_replace( '#[^0-9a-zA-Z]#i', SEPARATOR_KEYWORD, $bucket->name );
-		
 	}
 } //
 
