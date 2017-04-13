@@ -54,7 +54,7 @@ if( $_SERVER['argc'] != 3 ) {
 	$q = "SELECT * FROM arus_domain AS d WHERE d.id='".$domain_id."'";
 	$r = $db->query( $q );
 	if( !$r ) {
-		exit( -1 );
+		usage( 'query error (get domain)' );
 	}
 	if( !$r->num_rows ) {
 		usage( '"'.$domain_id.'" domain not found' );
@@ -68,13 +68,16 @@ if( $_SERVER['argc'] != 3 ) {
 	$q = "SELECT * FROM arus_host AS h WHERE h.domain_id='".$domain_id."'";
 	$r = $db->query( $q );
 	if( !$r ) {
-		exit( -1 );
+		usage( 'query error (get hosts)' );
 	}
 	
 	$host_file = tempnam( '/tmp', 'act_' );
 	$combin_file = tempnam( '/tmp', 'act_' );
 	$final_file = tempnam( '/tmp', 'act_' );
-	
+	//var_dump($host_file);
+	//var_dump($combin_file);
+	//var_dump($final_file);
+
 	while( ($host=$r->fetch_object()) ) {
 		file_put_contents( $host_file, $host->name."\n", FILE_APPEND );
 	}
