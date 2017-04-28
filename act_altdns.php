@@ -21,10 +21,10 @@ if( $_SERVER['argc'] != 3 ) {
 
 
 { // init
-	define( 'ACTARUS_PATH', '/var/www/html/actarus.10degres.net' );
+	define( 'ACTARUS_PATH', '/var/www/html/actarus' );
 	define( 'WILDCARD_ALERT', 100 );
 	
-	require_once( ACTARUS_PATH.'/vendor/actarus/custom/Config.php' );
+	require_once( ACTARUS_PATH.'/vendor/actarus/Config.php' );
 	require_once( dirname(__FILE__).'/Utils.php' );
 	
 	

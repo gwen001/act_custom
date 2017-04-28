@@ -3,7 +3,7 @@
 
 /**
  * Overlay for AltDNS
- * https://github.com/infosec-au/altdns
+ * https://github.com/infosec-au/altdns but for AWS S3 bucket
  * 
  */
 
@@ -21,10 +21,10 @@ if( $_SERVER['argc'] != 3 ) {
 
 
 { // init
-	define( 'ACTARUS_PATH', '/var/www/html/actarus.10degres.net' );
+	define( 'ACTARUS_PATH', '/var/www/html/actarus' );
 	define( 'WILDCARD_ALERT', 100 );
 	
-	require_once( ACTARUS_PATH.'/vendor/actarus/custom/Config.php' );
+	require_once( ACTARUS_PATH.'/vendor/actarus/Config.php' );
 	require_once( dirname(__FILE__).'/Utils.php' );
 	
 	
@@ -50,7 +50,7 @@ if( $_SERVER['argc'] != 3 ) {
 	
 	define( 'SEPARATOR_KEYWORD', '__SEP__' );
 	$t_todo = [];
-	$t_separator = [ '.', '-' ];
+	$t_separator = [ '.', '-', '_' ];
 } //
 
 
