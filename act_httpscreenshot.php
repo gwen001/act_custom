@@ -71,6 +71,7 @@ if( $_SERVER['argc'] < 2 || $_SERVER['argc'] > 3 ) {
 	define( 'HTML_EXTENSION', 'html' );
 	define( 'IMG_MAX_WIDTH', 1024 );
 	define( 'IMG_MAX_HEIGHT', 768 );
+	define( 'HEADLESS_MODE', false );
 
 	require_once( ACTARUS_PATH.'/vendor/actarus/Config.php' );
 	require_once( dirname(__FILE__).'/Utils.php' );
@@ -147,9 +148,11 @@ if( $_SERVER['argc'] < 2 || $_SERVER['argc'] > 3 ) {
 	clean();
 	
 	echo "Calling HTTPscreenshot\n";
-	$cmd = '/opt/httpscreenshot/httpscreenshot.py --headless -s '.$url.' -o '.OUTPUT_DIR;
 	$cmd = '/opt/httpscreenshot/httpscreenshot.py -s '.$url.' -o '.OUTPUT_DIR;
-	//var_dump( $cmd );
+	if( HEADLESS_MODE ) {
+		$cmd .= ' --headless';
+	}
+	var_dump( $cmd );
 	@exec( $cmd );
 	
 	if( is_file($screenshot_path) )

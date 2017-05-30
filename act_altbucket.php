@@ -136,13 +136,15 @@ if( $_SERVER['argc'] != 3 ) {
 	}
 	
 	$t_final = array_unique( $t_combin );
+	//var_dump( $t_final );
+	//exit();
 	file_put_contents( $final_file, implode("\n",$t_combin), FILE_APPEND );
 } //
 
 
 { // call the bruteforcer and display output
-	$cmd = '/opt/bin/s3-buckets-bruteforce '.$final_file;
-	//echo $cmd."\n";
+	$cmd = '/opt/bin/s3-buckets-bruteforcer --bucket '.$final_file;
+	echo $cmd."\n";
 	exec( $cmd, $output );
 	
 	echo implode( "\n", $output )."\n";
