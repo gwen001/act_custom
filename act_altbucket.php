@@ -143,7 +143,7 @@ if( $_SERVER['argc'] != 3 ) {
 
 
 { // call the bruteforcer and display output
-	$cmd = '/opt/bin/s3-buckets-bruteforcer --bucket '.$final_file;
+	$cmd = '/opt/bin/s3-buckets-bruteforcer --verbosity 1 --thread 10 --no-color --bucket '.$final_file;
 	echo $cmd."\n";
 	exec( $cmd, $output );
 	
