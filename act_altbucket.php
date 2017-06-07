@@ -129,6 +129,7 @@ if( $_SERVER['argc'] != 3 ) {
 	}
 	
 	while( ($host=$r->fetch_object()) ) {
+		$t_combin[] = $host->name;
 		$h = preg_replace( '#[^0-9a-zA-Z]#i', SEPARATOR_KEYWORD, $host->name );
 		foreach( $t_separator as $s ) {
 			$t_combin[] = str_replace( SEPARATOR_KEYWORD, $s, $h );
