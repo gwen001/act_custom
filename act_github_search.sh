@@ -36,7 +36,7 @@ t_dorks=(
 	'-f .bashrc -s mailchimp'
 	'-f .bash_profile -s aws'
 	'-s password'
-	'-s s3.amazonaws.com'
+	'-s amazonaws.com'
 	'-s api.forecast.io -e json'
 	'-s mongolab.com -e json'
 	'-s mongolab.com -e yaml'
