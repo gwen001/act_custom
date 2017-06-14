@@ -86,19 +86,33 @@ if( $_SERVER['argc'] != 3 ) {
 
 { // call altdns and parse output
 	$t_result = [];
-	$cmd = '/opt/bin/altdns -i '.$host_file.' -o '.$combin_file.' -w '.$wordlist.' -r -s '.$final_file;
+	//$cmd = '/opt/bin/altdns -i '.$host_file.' -o '.$combin_file.' -w '.$wordlist.' -r -s '.$final_file;
+	$cmd = '/opt/bin/altdns -i '.$host_file.' -o '.$combin_file.' -w '.$wordlist;
 	echo $cmd."\n";
-	exec( $cmd, $output ); 
+	exec( $cmd );
+	//var_dump( $output );
+	
+	$cmd = "massdns -r /opt/massdns/resolvers.txt ".$combin_file." 2>&1 | grep -i noerror";
+	//$cmd = "massdns -r /home/gwen/Sécurité/tools/dns/massdns/resolvers.txt ddd 2>&1 | grep -i noerror";
+	echo $cmd."\n";
+	exec( $cmd, $output );
 	//var_dump( $output );
 	
 	foreach( $output as $r ) {
 		if( !stristr($r,$domain->name) ) {
 			continue;
 		}
-		$m = preg_match( '#(.*)\s*:\s*(.*)#', $r, $matches );
+		/*$m = preg_match( '#(.*)\s*:\s*(.*)#', $r, $matches );
 		if( $m ) {
 			list( $h, $ip ) = explode( ':', $r );
 			$t_result[ trim($h) ] = trim( $ip );
+		}*/
+		$m = preg_match( '#(.*):53\s+[0-9]+\s+NOERROR\s+(.*)\s+IN.*#', $r, $matches );
+		if( $m ) {
+			list( $h, $ip ) = explode( ':', $r );
+			$h = trim( $matches[2], ' .' );
+			$ip = trim( $matches[1], ' .' );
+			$t_result[ $h ] = $ip;
 		}
 	}
 	//var_dump( $t_result );
@@ -133,7 +147,7 @@ if( $_SERVER['argc'] != 3 ) {
 	}
 } //
 
-
+exit();
 { // the end
 	$db->close();
 	
