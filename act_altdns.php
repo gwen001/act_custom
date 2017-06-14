@@ -92,8 +92,7 @@ if( $_SERVER['argc'] != 3 ) {
 	exec( $cmd );
 	//var_dump( $output );
 	
-	$cmd = "massdns -r /opt/massdns/resolvers.txt ".$combin_file." 2>&1 | grep -i noerror";
-	//$cmd = "massdns -r /home/gwen/Sécurité/tools/dns/massdns/resolvers.txt ddd 2>&1 | grep -i noerror";
+	$cmd = "massdns -r /opt/massdns/myr.txt -o -q ".$combin_file;
 	echo $cmd."\n";
 	exec( $cmd, $output );
 	//var_dump( $output );
@@ -107,12 +106,14 @@ if( $_SERVER['argc'] != 3 ) {
 			list( $h, $ip ) = explode( ':', $r );
 			$t_result[ trim($h) ] = trim( $ip );
 		}*/
-		$m = preg_match( '#(.*):53\s+[0-9]+\s+NOERROR\s+(.*)\s+IN.*#', $r, $matches );
+		$m = preg_match( '#(.*)\s+[0-9]+\s+IN\s+(A|AAAA|SOA|CNAME|MX)\s+(.*).*#', $r, $matches );
 		if( $m ) {
-			list( $h, $ip ) = explode( ':', $r );
-			$h = trim( $matches[2], ' .' );
-			$ip = trim( $matches[1], ' .' );
-			$t_result[ $h ] = $ip;
+			$m = preg_replace( '#\s+#', ' ', $matches[0] );
+			$tmp = explode( ' ', $m );
+			$h = trim( $tmp[0], '.' );
+			if( $h != $domain->name ) {
+				$t_result[ $h ] = '';
+			}
 		}
 	}
 	//var_dump( $t_result );
@@ -138,7 +139,7 @@ if( $_SERVER['argc'] != 3 ) {
 		//var_dump( $percent_uniq );
 		
 		if( $percent_uniq >= WILDCARD_ALERT ) {
-			usage( 'wildcard detected' );
+			//usage( 'wildcard detected' );
 		}
 		
 		foreach( $t_host as $h ) {
@@ -147,7 +148,7 @@ if( $_SERVER['argc'] != 3 ) {
 	}
 } //
 
-exit();
+
 { // the end
 	$db->close();
 	
