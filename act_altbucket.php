@@ -139,7 +139,7 @@ if( $_SERVER['argc'] != 3 ) {
 	$t_final = array_unique( $t_combin );
 	//var_dump( $t_final );
 	//exit();
-	file_put_contents( $final_file, implode("\n",$t_combin), FILE_APPEND );
+	file_put_contents( $final_file, implode("\n",$t_final), FILE_APPEND );
 } //
 
 
