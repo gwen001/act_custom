@@ -92,6 +92,9 @@ if( $_SERVER['argc'] != 3 ) {
 	exec( $cmd );
 	//var_dump( $output );
 	
+	$n_perms = (int)exec( 'wc -l '.$combin_file );
+	echo $n_perms." permutations created.\n";
+	
 	$cmd = "massdns -r /opt/massdns/myr.txt -o -q ".$combin_file;
 	echo $cmd."\n";
 	exec( $cmd, $output );
