@@ -80,8 +80,6 @@ if( $_SERVER['argc'] != 3 ) {
 	//var_dump( $config );
 	//exit();
 	
-	$entity_id = trim( $_SERVER['argv'][1] );
-	
 	$t_code_exclude = [400,404,500,503,505];
 	$t_length_exclude = [];
 	$t_word_exclude = [];
