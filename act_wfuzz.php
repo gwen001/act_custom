@@ -64,22 +64,8 @@ if( $_SERVER['argc'] != 3 ) {
 	define( 'TEST_LIST', '/opt/SecLists/mine/dns.txt' );
 	define( 'EXCLUDE_RATIO', 20 ); // minimum percent (of the total lines of the TEST_LIST) for a code to be excluded
 
-	require_once( ACTARUS_PATH.'/vendor/actarus/Config.php' );
 	require_once( dirname(__FILE__).'/Utils.php' );
-	
-	// config
-	$config = Config::getInstance();
-	$config->actarusPath = ACTARUS_PATH;
-	$config->appPath     = $config->actarusPath.'/app';
-	$config->consolePath = $config->actarusPath.'/app/console';
-	$config->configPath  = $config->appPath.'/config';
-	$config->webPath     = $config->actarusPath.'/web';
-	$config->logPath     = $config->appPath.'/logs';
-	$config->loadParameters( $config->configPath.'/parameters.yml', 'parameters' );
-	$config->loadParameters( $config->configPath.'/myparameters.yml', 'parameters' );
-	//var_dump( $config );
-	//exit();
-	
+		
 	$t_code_exclude = [400,404,500,503,505];
 	$t_length_exclude = [];
 	$t_word_exclude = [];
