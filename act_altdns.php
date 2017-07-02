@@ -36,7 +36,7 @@ if( $_SERVER['argc'] != 3 ) {
 	$config->configPath  = $config->appPath.'/config';
 	$config->logPath     = $config->appPath.'/logs';
 	$config->loadParameters( $config->configPath.'/parameters.yml', 'parameters' );
-	$config->loadParameters( $config->configPath.'/myparameters.yml', 'parameters' );
+	$config->loadParameters( $config->configPath.'/act_parameters.yml', 'parameters' );
 	//var_dump( $config );
 	//exit();
 	
