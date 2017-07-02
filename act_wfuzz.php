@@ -12,7 +12,7 @@
 function buildCommand( $url, $wordlist, $t_code_exclude, $t_length_exclude, $t_word_exclude, $t_char_exclude )
 {
 
-	$cmd = 'wfuzz -o gcustom -z file,'.$wordlist;
+	$cmd = 'wfuzz -o gcustom -t 5 -z file,'.$wordlist;
 	
 	if( count($t_code_exclude) ) {
 		$cmd .= ' --hc '.implode( ',', $t_code_exclude );
