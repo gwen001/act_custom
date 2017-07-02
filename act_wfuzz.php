@@ -106,7 +106,7 @@ if( $_SERVER['argc'] != 3 ) {
 				$t_code_exclude[] = $v;
 			}
 		}
-		
+		/*
 		$acv = array_count_values( $matches[3] );
 		foreach( $acv as $v=>$n ) {
 			if( $n >= $n_exclude ) {
@@ -127,6 +127,7 @@ if( $_SERVER['argc'] != 3 ) {
 				$t_char_exclude[] = $v;
 			}
 		}
+		*/
 	}
 } //
 
