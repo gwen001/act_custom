@@ -62,7 +62,7 @@ if( $_SERVER['argc'] != 3 ) {
 { // init
 	define( 'ACTARUS_PATH', '/var/www/html/actarus' );
 	define( 'TEST_LIST', '/opt/SecLists/mine/test.txt' );
-	define( 'EXCLUDE_RATIO', 10 ); // minimum percent (of the total lines of the TEST_LIST) for a code to be excluded
+	define( 'EXCLUDE_RATIO', 3 ); // minimum percent (of the total lines of the TEST_LIST) for a code to be excluded
 
 	require_once( dirname(__FILE__).'/Utils.php' );
 		
