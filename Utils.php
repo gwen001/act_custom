@@ -144,4 +144,22 @@ class Utils
 
 		return $str;
 	}
+	
+
+	public static function _exec( $cmd )
+	{
+		$output = '';
+	
+		while( @ob_end_flush() );
+		
+		$proc = popen( $cmd, 'r' );
+		while( !feof($proc) ) {
+			$line = fread( $proc, 4096 );
+			echo $line;
+			$output .= $line;
+			@flush();
+		}
+		
+		return $output;
+	}
 }

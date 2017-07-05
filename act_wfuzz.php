@@ -136,8 +136,9 @@ if( $_SERVER['argc'] != 3 ) {
 	echo "perform real command:\n";
 	$cmd = buildCommand( $url, $reallist, $t_code_exclude, $t_length_exclude, $t_word_exclude, $t_char_exclude );
 	echo $cmd."\n\n";
-	exec( $cmd, $output );
-	$output = implode( "\n", $output );
+	//exec( $cmd, $output );
+	$output = Utils::_exec( $cmd );
+	//$output = implode( "\n", $output );
 	$output = cleanOutput( $output );
 	echo $output."\n\n";
 }
