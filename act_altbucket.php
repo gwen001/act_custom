@@ -112,7 +112,7 @@ if( $_SERVER['argc'] != 3 ) {
 	file_put_contents( $bucket_file, implode("\n",$t_all), FILE_APPEND );
 
 	$cmd = '/opt/bin/altdns -i '.$bucket_file.' -o '.$combin_file.' -w '.$wordlist;
-	//echo $cmd."\n";
+	echo $cmd."\n";
 	exec( $cmd );
 
 	$t_combin = file( $combin_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
@@ -140,6 +140,9 @@ if( $_SERVER['argc'] != 3 ) {
 	//var_dump( $t_final );
 	//exit();
 	file_put_contents( $final_file, implode("\n",$t_final), FILE_APPEND );
+
+	$n_perms = (int)exec( 'wc -l '.$final_file );
+	echo $n_perms." permutations created.\n\n";
 } //
 
 
