@@ -140,7 +140,8 @@ if( $_SERVER['argc'] != 3 ) {
 	$output = Utils::_exec( $cmd );
 	//$output = implode( "\n", $output );
 	$output = cleanOutput( $output );
-	echo $output."\n\n";
+	//echo $output."\n\n";
+	echo "\n\n";
 }
 
 

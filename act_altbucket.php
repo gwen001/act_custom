@@ -152,7 +152,8 @@ if( $_SERVER['argc'] != 3 ) {
 	//exec( $cmd, $output );
 	$output = Utils::_exec( $cmd );
 	
-	echo $output."\n";
+	//echo $output."\n";
+	echo "\n";
 } //
 
 
