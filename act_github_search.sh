@@ -75,6 +75,10 @@ t_dorks=(
 	'-f passwd'
 	'-f .htpasswd'
 	'-f .htaccess'
+	'-s API_key'
+	'-s secret_key'
+	'-s aws_key'
+	'-s github_token'
 )
 
 i=0
