@@ -79,6 +79,12 @@ t_dorks=(
 	'-s secret_key'
 	'-s aws_key'
 	'-s github_token'
+	'-s app_secret'
+	'-s app_key'
+	'-s apikey'
+	'-s fb_secret'
+	'-s google_secret'
+	'-s gsecre'
 )
 
 i=0
