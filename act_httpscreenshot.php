@@ -71,7 +71,7 @@ if( $_SERVER['argc'] < 2 || $_SERVER['argc'] > 3 ) {
 	define( 'HTML_EXTENSION', 'html' );
 	define( 'IMG_MAX_WIDTH', 1024 );
 	define( 'IMG_MAX_HEIGHT', 768 );
-	define( 'HEADLESS_MODE', false );
+	define( 'HEADLESS_MODE', true );
 
 	require_once( ACTARUS_PATH.'/vendor/actarus/Config.php' );
 	require_once( dirname(__FILE__).'/Utils.php' );
