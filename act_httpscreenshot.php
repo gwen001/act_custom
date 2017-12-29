@@ -29,6 +29,11 @@ function resizeAndCopy( $src, $dst )
 		return false;
 	}
 	
+	imagesavealpha( $img_dst, true );
+	imagealphablending( $img_dst, false );
+	$transparent = imagecolorallocatealpha( $img_dst, 0, 0, 0, 127 );
+	imagefill( $img_dst, 0, 0, $transparent );
+	
 	$a = imagecopyresampled( $img_dst, $img_src, 0, 0, 0, 0, $width, $height, $t_infos[0], $t_infos[1] );
 	if( !$a ) {
 		return false;
@@ -148,7 +153,7 @@ if( $_SERVER['argc'] < 2 || $_SERVER['argc'] > 3 ) {
 	clean();
 	
 	echo "Calling HTTPscreenshot\n";
-	$cmd = '/opt/httpscreenshot/httpscreenshot.py -s '.$url.' -o '.OUTPUT_DIR;
+	$cmd = 'httpscreenshot -s '.$url.' -o '.OUTPUT_DIR;
 	if( HEADLESS_MODE ) {
 		$cmd .= ' --headless';
 	}
