@@ -63,7 +63,7 @@ class Utils
 
 	public static function _print( $str, $color )
 	{
-		echo "\033[".self::T_SHELL_COLORS[$color]."m".$str." \033[0m";
+		echo "\033[".self::T_SHELL_COLORS[$color]."m".$str."\033[0m";
 	}
 	public static function _println( $str, $color )
 	{
