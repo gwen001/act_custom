@@ -162,7 +162,7 @@ if( $_SERVER['argc'] < 2 || $_SERVER['argc'] > 3 ) {
 
 	if( is_array($t_screens) && count($t_screens) )
 	{
-		$screenshot = $tmp[0];
+		$screenshot = $t_screens[0];
 		$screenshot_name = basename( $screenshot );
 
 		if( resizeAndCopy($screenshot,$destination_path) )
