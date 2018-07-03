@@ -151,7 +151,7 @@ if( $_SERVER['argc'] < 2 || $_SERVER['argc'] > 3 ) {
 	clean();
 	
 	echo "Calling EyeWitness\n";
-	$cmd = 'EyeWitness --single '.$url.' --no-prompt -d '.$output_path;
+	$cmd = 'EyeWitness --single '.$url.' --no-prompt --timeout 20 --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:56.0) Gecko/20100101 Firefox/56.0" -d '.$output_path;
 	if( HEADLESS_MODE ) {
 		$cmd .= ' --headless';
 	}
