@@ -64,6 +64,17 @@ if( $_SERVER['argc'] != 3 ) {
 } //
 
 
+{ // test wildcard right now
+	exec( 'host '.uniqid().'.'.$domain, $output );
+	//var_dump( $output );
+	$output = implode( "\n", $output );
+	
+	if( stristr($output,'has address') !== false ) {
+		usage( 'wildcard detected' );
+	}
+} //
+
+
 { // get known subdomains
 	$q = "SELECT * FROM arus_host AS h WHERE h.domain_id='".$domain_id."'";
 	$r = $db->query( $q );
